@@ -78,16 +78,16 @@ def _build_datasource_layer(container: Container) -> None:
 
 def _build_use_cases(container: Container) -> None:
     repository = container[GiftCardMongoDBRepository]
-    container[
-        GiftCardAssetInformationUseCase
-    ] = lambda c: GiftCardAssetInformationUseCase(repository)
+    container[GiftCardAssetInformationUseCase] = (
+        lambda c: GiftCardAssetInformationUseCase(repository)
+    )
     container[AddGiftCardUseCase] = lambda c: AddGiftCardUseCase(repository)
     container[DenominationFetcherUseCase] = lambda c: DenominationFetcherUseCase(
         repository,
     )
-    container[
-        NearExpiryGiftCardFetcherUseCase
-    ] = lambda c: NearExpiryGiftCardFetcherUseCase(repository)
+    container[NearExpiryGiftCardFetcherUseCase] = (
+        lambda c: NearExpiryGiftCardFetcherUseCase(repository)
+    )
     container[MarkGiftCardUsedUseCase] = lambda c: MarkGiftCardUsedUseCase(repository)
     container[EditGiftCardUseCase] = lambda c: EditGiftCardUseCase(repository)
     container[FetchUnusedGiftCardsUseCase] = lambda c: FetchUnusedGiftCardsUseCase(
@@ -97,9 +97,9 @@ def _build_use_cases(container: Container) -> None:
 
 def _build_views(container: Container) -> None:
     gift_card_asset_use_case = container[GiftCardAssetInformationUseCase]
-    container[
-        GiftCardAssetInformationResource
-    ] = lambda c: GiftCardAssetInformationResource(gift_card_asset_use_case)
+    container[GiftCardAssetInformationResource] = (
+        lambda c: GiftCardAssetInformationResource(gift_card_asset_use_case)
+    )
     add_gc_use_case = container[AddGiftCardUseCase]
     fetch_unused_use_case = container[FetchUnusedGiftCardsUseCase]
     update_gc_use_case = container[EditGiftCardUseCase]
