@@ -28,7 +28,7 @@ jobs:
       - name: Type Check (mypy)
         run: poetry run mypy
       - name: Lint Check (Ruff)
-        run: poetry run ruff gcmanager/ tests/
+        run: poetry run ruff check gcmanager/ tests/
       - name: Common Security Checks (bandit)
         run: poetry run bandit -r gcmanager --verbose
       - name: Start MongoDB
@@ -49,7 +49,8 @@ jobs:
           poetry run coverage report
           poetry run coverage xml
       - name: Upload Coverage Report to CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
           verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}

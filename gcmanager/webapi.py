@@ -63,7 +63,7 @@ class GiftCardResource:
         except ValidationError as validation_error:
             raise errors.HTTPBadRequest(
                 title="Validation Error",
-                description=validation_error.messages,
+                description=json.dumps(validation_error.messages),
             )
         try:
             self._create_use_case.create(gift_card_create_request)
