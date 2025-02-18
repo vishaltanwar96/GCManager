@@ -11,6 +11,8 @@ jobs:
       IMAGE_NAME: gcmanager
       REGISTRY: docker.io/vishaltanwar96
     steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v4
       - name: "Build Image"
         id: build-image
         uses: redhat-actions/buildah-build@v2
