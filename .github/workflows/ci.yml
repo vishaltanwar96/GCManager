@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10.4'
       - name: Install and configure Poetry
@@ -32,7 +32,7 @@ jobs:
       - name: Common Security Checks (bandit)
         run: poetry run bandit -r gcmanager --verbose
       - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.7.0
+        uses: supercharge/mongodb-github-action@1.12.0
         with:
           mongodb-version: '5.0.6'
           mongodb-username: testing_user
