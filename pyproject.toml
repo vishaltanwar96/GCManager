@@ -35,7 +35,7 @@ include = '\.pyi?$'
 
 [tool.ruff]
 target-version = "py310"
-select = ["E", "F", "C90", "W", "COM", "I", "UP", "G", "T20", "RET", "SIM", "ERA"]
+select = ["E", "F", "C90", "W", "COM818", "I", "UP", "G", "T20", "RET", "SIM", "ERA"]
 line-length = 88
 extend-exclude = ["venv/"]
 
