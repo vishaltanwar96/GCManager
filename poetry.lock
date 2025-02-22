@@ -249,22 +249,6 @@ testing = ["coverage", "eventlet", "gevent", "pytest", "pytest-cov"]
 tornado = ["tornado (>=0.2)"]
 
 [[package]]
-name = "isort"
-version = "6.0.0"
-description = "A Python utility / library to sort Python imports."
-optional = false
-python-versions = ">=3.9.0"
-groups = ["dev"]
-files = [
-    {file = "isort-6.0.0-py3-none-any.whl", hash = "sha256:567954102bb47bb12e0fae62606570faacddd441e45683968c8d1734fb1af892"},
-    {file = "isort-6.0.0.tar.gz", hash = "sha256:75d9d8a1438a9432a7d7b54f2d3b45cad9a4a0fdba43617d9873379704a8bdf1"},
-]
-
-[package.extras]
-colors = ["colorama"]
-plugins = ["setuptools"]
-
-[[package]]
 name = "kink"
 version = "0.8.1"
 description = "Dependency injection for python."
@@ -752,4 +736,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "3.10.4"
-content-hash = "2f583c4717f417edeecb12b3d9cae5293195ad6fa799d60e352cd0513f185bd0"
+content-hash = "2901f5d6a57d5c3c8908ca361353505e43205bb6e747ace808e189fbcae9ff6c"

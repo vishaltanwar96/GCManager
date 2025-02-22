@@ -23,8 +23,6 @@ jobs:
         run: poetry install --no-root --no-interaction
       - name: Format Check (Ruff)
         run: poetry run ruff format --check --diff gcmanager/ tests/
-      - name: Imports Sorting Check (isort)
-        run: poetry run isort gcmanager/ tests/ --check --diff
       - name: Type Check (mypy)
         run: poetry run mypy
       - name: Lint Check (Ruff)
