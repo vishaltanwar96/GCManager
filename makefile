@@ -1,5 +1,4 @@
 build:
-	black gcmanager/ tests/ --check --verbose --diff --color
 	isort gcmanager/ tests/ --check --diff
 	ruff format --check --diff gcmanager/ tests/
 	mypy
@@ -14,6 +13,5 @@ build:
 	coverage report
 style:
 	ruff check --select="COM818,F401,I001,I002,W291,W292,W293,UP,SIM" gcmanager/ tests/ --fix
-	black gcmanager/ tests/
 	ruff format gcmanager/ tests/
 	isort gcmanager/ tests/

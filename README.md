@@ -9,9 +9,6 @@ A Gift Card Management System
 <a href="https://lbesson.mit-license.org/">
 <img src="https://img.shields.io/badge/License-MIT-blue.svg">
 </a>
-<a href="https://github.com/psf/black">
-<img src="https://img.shields.io/badge/code%20style-black-000000.svg">
-</a>
 <a href="https://github.com/astral-sh/ruff">
 <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json">
 </a>
