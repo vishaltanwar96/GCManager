@@ -47,7 +47,7 @@ A Gift Card Management System
 |   `-- webapi.py              <- All the Views that map to a URL are located in here.
 |-- makefile                   <- Used to run a CI like system locally.
 |-- mongo-for-testing.yml      <- MongoDB docker-compose file used for local testing.
-|-- poetry.lock
+|-- uv.lock
 |-- pyproject.toml
 `-- tests
     |-- __init__.py
