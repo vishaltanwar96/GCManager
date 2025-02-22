@@ -2,7 +2,7 @@ build:
 	ruff format --check --diff gcmanager/ tests/
 	mypy
 	ruff check gcmanager/ tests/
-	bandit -r gcmanager --verbose
+	ruff check --select="S" gcmanager/
 	nerdctl compose -f mongo-for-testing.yml up -d
 	coverage erase
 	coverage run -mp unittest discover tests/unit --verbose
