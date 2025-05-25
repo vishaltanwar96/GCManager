@@ -4,6 +4,7 @@ from abc import ABC
 from abc import abstractmethod
 from dataclasses import asdict
 
+import pymongo
 from pymongo import ASCENDING
 from pymongo.collection import Collection
 
@@ -70,29 +71,23 @@ class GiftCardMongoDBRepository(GiftCardRepository):
         self._collection = gc_collection
 
     def get_summary(self) -> GiftCardAssetSummary:
+        sum_of_cash = {
+            "$group": {
+                "_id": None,
+                "amount": {"$sum": "$denomination"},
+            },
+        }
+        remove_id_attribute = {"$project": {"_id": 0}}
         aggregation_result = list(
             self._collection.aggregate(
                 [
                     {
                         "$facet": {
-                            "total": [
-                                {
-                                    "$group": {
-                                        "_id": None,
-                                        "amount": {"$sum": "$denomination"},
-                                    },
-                                },
-                                {"$project": {"_id": 0}},
-                            ],
+                            "total": [sum_of_cash, remove_id_attribute],
                             "used": [
                                 {"$match": {"is_used": True}},
-                                {
-                                    "$group": {
-                                        "_id": None,
-                                        "amount": {"$sum": "$denomination"},
-                                    },
-                                },
-                                {"$project": {"_id": 0}},
+                                sum_of_cash,
+                                remove_id_attribute,
                             ],
                         },
                     },
@@ -117,11 +112,13 @@ class GiftCardMongoDBRepository(GiftCardRepository):
         return datetime.datetime.now()
 
     def get_available_denominations(self) -> list[Denomination]:
+        group_by_denomination = {"$group": {"_id": "$denomination"}}
+        match_unused_gift_cards = {"$match": {"is_used": False}}
         aggregation = self._collection.aggregate(
             [
-                {"$match": {"is_used": False}},
-                {"$group": {"_id": "$denomination"}},
-                {"$sort": {"_id": 1}},
+                match_unused_gift_cards,
+                group_by_denomination,
+                {"$sort": {"_id": pymongo.ASCENDING}},
             ],
         )
         return [result["_id"] for result in aggregation]
