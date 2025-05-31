@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-bullseye
+FROM python:3.13.2-slim-bullseye
 RUN apt-get update
 RUN apt-get install curl -y
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
