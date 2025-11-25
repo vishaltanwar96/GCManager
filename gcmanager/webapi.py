@@ -121,6 +121,7 @@ class NearExpiryGiftCardResource:
         serialized_data = self._serializer.dump(gift_card)
         response.status = falcon.HTTP_200
         response.text = SuccessfulResponse(serialized_data).serialize()
+        foo bar
 
 
 class MarkGiftCardUsedResource:
